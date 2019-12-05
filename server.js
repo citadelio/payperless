@@ -1,6 +1,6 @@
 const express = require("express");
 const dotenv = require("dotenv");
-const morgan = require("morgan");
+// const morgan = require("morgan");
 const mongoose = require("mongoose");
 const app = express();
 dotenv.config();
@@ -20,7 +20,7 @@ if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
 }
 
-app.use(morgan("combined"));
+// app.use(morgan("combined"));
 app.use(express.json({ extended: false }));
 app.use("/auth", require("./routes/auth"));
 app.use("/account", require("./routes/account"));
