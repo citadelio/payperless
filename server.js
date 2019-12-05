@@ -2,6 +2,7 @@ const express = require("express");
 const dotenv = require("dotenv");
 // const morgan = require("morgan");
 const mongoose = require("mongoose");
+const path = require("path")
 const app = express();
 dotenv.config();
 
@@ -32,6 +33,13 @@ app.use("/flutterwave", require("./routes/flutterwave"));
 
 // Run CronJobs
 CronJobs.dailySettlementJob();
+app.get('/*', (req, res)=> {
+  res.sendFile(path.join(__dirname, 'build/index.html'), (err)=> {
+    if (err) {
+      res.status(500).send(err)
+    }
+  })
+})
 
 app.listen(process.env.PORT || 5000, () =>
   console.log(`Server started on port ${process.env.PORT}`)
