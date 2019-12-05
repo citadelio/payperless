@@ -33,6 +33,7 @@ app.use("/flutterwave", require("./routes/flutterwave"));
 
 // Run CronJobs
 CronJobs.dailySettlementJob();
+
 app.get('/*', (req, res)=> {
   res.sendFile(path.join(__dirname, 'build/index.html'), (err)=> {
     if (err) {
