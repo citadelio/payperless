@@ -170,7 +170,7 @@ router.post("/payment-link-callback/:txref", async (req, res) => {
   }
 });
 
-router.get("/:id", async (req, res) => {
+router.get("/p/:id", async (req, res) => {
   let paymentlink = process.env.DOMAIN + "/pay/" + req.params.id;
   try {
     const receiver = await UserModel.findOne({ paymentlink });

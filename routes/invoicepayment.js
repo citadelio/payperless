@@ -177,7 +177,7 @@ router.post("/payment-redirect/:txref", async (req, res) => {
   }
 });
 
-router.get("/:id", async (req, res) => {
+router.get("/p/:id", async (req, res) => {
   const invoice = await InvoiceModel.findOne({ txref: req.params.id });
 
   if (!invoice) {
